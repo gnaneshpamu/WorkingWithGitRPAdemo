@@ -83,7 +83,11 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="925.2,1233.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(of String) from {&quot;MADRID&quot;,&quot;valnecia&quot;,&quot;BARCELONA&quot;}]" Name="SpainCities" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="SpainCities">
+        <Variable.Default>
+          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="New List(of String) from {&quot;MADRID&quot;,&quot;BARCELONA&quot;}" />
+        </Variable.Default>
+      </Variable>
       <Variable x:TypeArguments="scg:List(x:String)" Name="UKcities" />
       <Variable x:TypeArguments="scg:List(x:String)" Name="Allcities" />
       <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(of String)]" Name="AllCitiesTitleCase" />
@@ -93,13 +97,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uasc:BuildCollection x:TypeArguments="x:String" Items="{x:Null}" DisplayName="Build Collection" FirstItem="London" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="BuildCollection`1_1" Result="[UKcities]">
-      <uasc:BuildCollection.NextItems>
-        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-          <InArgument x:TypeArguments="x:String">Oval</InArgument>
-        </scg:List>
-      </uasc:BuildCollection.NextItems>
-    </uasc:BuildCollection>
+    <uasc:BuildCollection x:TypeArguments="x:String" NextItems="{x:Null}" DisplayName="Build Collection" FirstItem="London" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="BuildCollection`1_1" Items="[{&quot;Oval&quot;,&quot;Seattle&quot;}]" Result="[UKcities]" />
     <uasc:MergeCollections x:TypeArguments="x:String" Collection="[UKcities]" DisplayName="Merge Collections" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="MergeCollections`1_1" Result="[Allcities]" SecondCollection="[SpainCities]" />
     <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="451.2,166.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="Sort">
       <InvokeMethod.TargetObject>
